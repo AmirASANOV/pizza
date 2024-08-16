@@ -1,21 +1,9 @@
-import { Button } from "./button";
-import { Dialog } from "./dialog";
-import { Input } from "./input";
-import { Select } from "./select";
-import { Skeleton } from "./skeleton";
-import { Slider } from "./slider";
-import { Popover } from "./popover";
-import { Checkbox } from "./checkbox";
-import { Drawer } from "./drawer";
-
-export {
-  Button,
-  Dialog,
-  Input,
-  Select,
-  Skeleton,
-  Slider,
-  Popover,
-  Checkbox,
-  Drawer,
-};
+export { Button } from "./button";
+export { Dialog } from "./dialog";
+export { Input } from "./input";
+export { Select } from "./select";
+export { Skeleton } from "./skeleton";
+export { Slider } from "./slider";
+export { Popover } from "./popover";
+export { Checkbox } from "./checkbox";
+export { Drawer } from "./drawer";

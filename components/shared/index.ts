@@ -4,3 +4,6 @@ export { Title } from "./title";
 export { Categories } from "./Categories";
 export { SortPopup } from "./Sort-popup";
 export { TopBar } from "./Top-Bar";
+export { Filters } from "./Filters";
+export { FilterCheckbox } from "./FilterCheckbox";
+export { RangeSlider } from "./RangeSlider";
