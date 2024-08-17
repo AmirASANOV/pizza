@@ -6,11 +6,12 @@ import React, { FC } from "react";
 
 const cats = [
   { id: 1, name: "Пиццы" },
-  { id: 2, name: "Бургеры" },
-  { id: 3, name: "Напитки" },
-  { id: 4, name: "Десерты" },
-  { id: 5, name: "Закуски" },
-  { id: 6, name: "Соусы" },
+  { id: 2, name: "Комбо" },
+  { id: 3, name: "Закуски" },
+  { id: 4, name: "Коктейли" },
+  { id: 5, name: "Кофе" },
+  { id: 6, name: "Напитки" },
+  { id: 7, name: "Десерты" },
 ];
 
 interface Props {

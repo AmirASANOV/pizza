@@ -34,7 +34,7 @@ export default function Home() {
               />
 
               <ProductsGroupList
-                title="Бургеры"
+                title="Комбо"
                 items={[
                   {
                     id: 1,
@@ -48,7 +48,7 @@ export default function Home() {
                 categoryId={2}
               />
               <ProductsGroupList
-                title="Напитки"
+                title="Закуски"
                 items={[
                   {
                     id: 1,
