@@ -7,3 +7,4 @@ export { TopBar } from "./Top-Bar";
 export { Filters } from "./Filters";
 export { FilterCheckbox } from "./FilterCheckbox";
 export { RangeSlider } from "./RangeSlider";
+export { SearchInput } from "./SearchInput";
