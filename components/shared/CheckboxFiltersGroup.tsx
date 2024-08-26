@@ -3,43 +3,60 @@
 import React from "react";
 import { FilterChecboxProps, FilterCheckbox } from "./FilterCheckbox";
 import { Input } from "../ui/input";
+import { Skeleton } from "../ui";
 
 type Item = FilterChecboxProps;
 
 interface Props {
   title: string;
   items: Item[];
-  defaultItems: Item[];
+  defaultItems?: Item[];
   limit?: number;
   searchInputPlaceholder?: string;
-  onChange?: (values: string[]) => void;
+  onClickCheckbox?: (id: string) => void;
   defaultValue?: string[];
   className?: string;
+  loading?: boolean;
+  selected?: Set<string>;
+  name?: string;
 }
 
 export const CheckboxFiltersGroup: React.FC<Props> = ({
   title,
   items,
-  onChange,
+  onClickCheckbox,
+  selected,
   className,
-  defaultValue = [],
-  defaultItems = [],
+  defaultValue,
+  defaultItems,
   limit = 5,
   searchInputPlaceholder = "Поиск",
+  loading,
 }) => {
   const [showAll, setShowAll] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState("");
 
-  console.log(items);
   const list = showAll
     ? items.filter((item) =>
         item.text.toLowerCase().includes(searchValue.toLowerCase())
       )
-    : defaultItems.slice(0, limit);
+    : (defaultItems || items).slice(0, limit);
+
+  if (loading) {
+    return (
+      <div>
+        <p className="font-bold mb-3">{title}</p>
+        {...Array(limit)
+          .fill(0)
+          .map((_, index) => <Skeleton key={index} className="mb-4 h-6" />)}
+      </div>
+    );
+  }
 
   const onChangeSearchInput = (value: string) => {
     setSearchValue(value);
   };
+
   return (
     <div>
       <p className="font-bold mb-3">{title}</p>
@@ -58,8 +75,8 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
         {list.map((item, index) => (
           <FilterCheckbox
             key={index}
-            onCheckedChange={(ids) => console.log(ids)}
-            checked={false}
+            onCheckedChange={() => onClickCheckbox?.(item.value)}
+            checked={selected?.has(item.value)}
             text={item.text}
             value={item.value}
             endAdornment={item.endAdornment}
