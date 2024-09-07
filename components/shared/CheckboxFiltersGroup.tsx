@@ -32,6 +32,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
   limit = 5,
   searchInputPlaceholder = "Поиск",
   loading,
+  name,
 }) => {
   const [showAll, setShowAll] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState("");
@@ -79,6 +80,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
             checked={selected?.has(item.value)}
             text={item.text}
             value={item.value}
+            name={name}
             endAdornment={item.endAdornment}
           />
         ))}
