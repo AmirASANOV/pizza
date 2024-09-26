@@ -1,4 +1,4 @@
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import React from "react";
 import { useSet } from "react-use";
 
@@ -57,10 +57,10 @@ export const useFilters = (): ReturnProps => {
   });
 
   const updatePrice = (name: keyof PriceProps, value: number) => {
-    setPrices({
-      ...prices,
+    setPrices((prev) => ({
+      ...prev,
       [name]: value,
-    });
+    }));
   };
 
   return {

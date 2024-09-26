@@ -17,7 +17,6 @@ interface Props {
 export const ProductsGroupList: FC<Props> = ({
   title,
   items,
-  className,
   listClassName,
   categoryId,
 }) => {
@@ -32,7 +31,7 @@ export const ProductsGroupList: FC<Props> = ({
     if (intersection?.isIntersecting) {
       setActiveCategoryId(categoryId);
     }
-  }, [categoryId, intersection?.isIntersecting, title]);
+  }, [categoryId, intersection?.isIntersecting, setActiveCategoryId, title]);
 
   return (
     <div id={title} ref={intersectionRef}>

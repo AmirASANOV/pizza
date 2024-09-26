@@ -1,4 +1,3 @@
-import router from "next/router";
 import qs from "qs";
 import { useEffect } from "react";
 import { Filters } from "./useFilters";

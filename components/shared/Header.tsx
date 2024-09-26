@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Container } from "./Container";
 import { cn } from "@/lib/utils";

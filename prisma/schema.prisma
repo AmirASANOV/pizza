@@ -33,7 +33,7 @@ model User {
 model Category {
     id Int @id @default(autoincrement())
     name String @unique
-    product Product[]
+    products Product[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -162,5 +162,4 @@ enum OrderStatus {
 enum UserRole {
     USER
     ADMIN
-
 }

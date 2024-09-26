@@ -1,14 +1,29 @@
 import { Container, Filters, Title, TopBar } from "@/components/shared";
-import { ProductCard } from "@/components/shared/ProductCard";
 import { ProductsGroupList } from "@/components/shared/ProductsGroupList";
+import { prisma } from "@/prisma/prisma-client";
 
-export default function Home() {
+export default async function Home() {
+  const categories = await prisma.category.findMany({
+    include: {
+      product: {
+        include: {
+          items: true,
+          ingredients: true,
+        },
+      },
+    },
+  });
+
   return (
     <>
       <Container className="mt-10">
         <Title text="Главная" size="lg" className="font-extrabold" />
       </Container>
-      <TopBar />
+      <TopBar
+        categories={categories.filter(
+          (category) => category.product.length > 0
+        )}
+      />
 
       <Container className="mt-[40px] pb-14">
         <div className="flex gap-[80px]">
@@ -18,27 +33,21 @@ export default function Home() {
 
           <div className="flex-1">
             <div className="flex flex-col gap-16">
-              <ProductsGroupList
-                title="Пиццы"
-                items={[
-                  {
-                    id: 1,
-                    name: "Пицца 1",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:584x584/11EF438E93884BFEBFE79D11095AE2D4.avif",
-                    price: 300,
-                    items: [{ price: 300 }],
-                  },
-                ]}
-                categoryId={1}
-              />
+              {categories.map((category) => (
+                <ProductsGroupList
+                  key={category.id}
+                  title={category.name}
+                  items={category.product}
+                  categoryId={category.id}
+                />
+              ))}
 
               <ProductsGroupList
                 title="Комбо"
                 items={[
                   {
                     id: 1,
-                    name: "Пицца 1",
+                    name: "Пицца 12",
                     imageUrl:
                       "https://media.dodostatic.net/image/r:584x584/11EF438E93884BFEBFE79D11095AE2D4.avif",
                     price: 300,
