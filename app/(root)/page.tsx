@@ -5,7 +5,7 @@ import { prisma } from "@/prisma/prisma-client";
 export default async function Home() {
   const categories = await prisma.category.findMany({
     include: {
-      product: {
+      products: {
         include: {
           items: true,
           ingredients: true,
@@ -21,7 +21,7 @@ export default async function Home() {
       </Container>
       <TopBar
         categories={categories.filter(
-          (category) => category.product.length > 0
+          (category) => category.products.length > 0
         )}
       />
 
@@ -37,7 +37,7 @@ export default async function Home() {
                 <ProductsGroupList
                   key={category.id}
                   title={category.name}
-                  items={category.product}
+                  items={category.products}
                   categoryId={category.id}
                 />
               ))}
