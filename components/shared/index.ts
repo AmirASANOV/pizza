@@ -1,3 +1,4 @@
+import { ChoosePizzaForm } from "@/components/shared/ChoosePizzaForm";
 import { ProductImage } from "./ProductImage";
 export { Container } from "./Container";
 export { Header } from "./Header";
@@ -9,4 +10,5 @@ export { Filters } from "./Filters";
 export { FilterCheckbox } from "./FilterCheckbox";
 export { RangeSlider } from "./RangeSlider";
 export { SearchInput } from "./SearchInput";
+
 export * from "./modals";
