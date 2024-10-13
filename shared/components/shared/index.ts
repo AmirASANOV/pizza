@@ -13,4 +13,5 @@ export { RangeSlider } from "./RangeSlider";
 export { SearchInput } from "./SearchInput";
 export { IngredientItem } from "./IngredientItem";
 
+
 export * from "./modals";

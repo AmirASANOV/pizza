@@ -15,6 +15,9 @@ import { Ingredient, ProductItem } from "@prisma/client";
 import { IngredientItem } from "./IngredientItem";
 import { useSet } from "react-use";
 import { calcTotalPizzaPrice, getAvailablePizzaSizes } from "@/shared/lib";
+import { usePizzaOptions } from "@/shared/hooks/usePizzaOptions";
+import { it } from "node:test";
+import { getPizzaDetails } from "@/shared/hooks";
 
 interface Props {
   imageUrl: string;
@@ -33,26 +36,23 @@ export const ChoosePizzaForm: FC<Props> = ({
   onClickAddCart,
   className,
 }) => {
-  const [selectedIngredients, { toggle: addIngredient }] = useSet(
-    new Set<number>([])
-  );
-
-  const [size, setSize] = useState<PizzaSize>(20);
-  const [type, setType] = useState<PizzaType>(1);
-
-  const price = calcTotalPizzaPrice(
-    items,
+  const {
     size,
     type,
+    selectedIngredients,
+    availableSizes,
+    setSize,
+    setType,
+    addIngredient,
+  } = usePizzaOptions(items);
+
+  const { totalPrice, textDetails } = getPizzaDetails(
+    type,
+    size,
+    items,
     ingredients,
     selectedIngredients
   );
-
-  const availablePizzaSizes = getAvailablePizzaSizes(type, items);
-
-  const textDetails = `${size}  см, ${mapPizzaType[type]} пицца `;
-
-  
 
   const onHandleClick = () => {
     onClickAddCart?.();
@@ -74,7 +74,7 @@ export const ChoosePizzaForm: FC<Props> = ({
 
         <div className="flex flex-col gap-4 mt-5">
           <GroupVariants
-            items={availablePizzaSizes}
+            items={availableSizes}
             value={String(size)}
             onClick={(value) => setSize(Number(value) as PizzaSize)}
           />
@@ -101,7 +101,7 @@ export const ChoosePizzaForm: FC<Props> = ({
         </div>
 
         <Button className="h-[55px] px-10 text-base font-bold rounded-[18px] w-full mt-10">
-          Добавить в корзину за <p className="ml-1">{price} ₽</p>
+          Добавить в корзину за <p className="ml-1">{totalPrice} ₽</p>
         </Button>
       </div>
     </div>
