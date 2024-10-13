@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { Title, RangeSlider } from ".";
 import { Input } from "../ui";
 import { CheckboxFiltersGroup } from "./CheckboxFiltersGroup";
-import { useIngredients, useFilters, useQueryFilters } from "@/hooks";
+import { useIngredients, useFilters, useQueryFilters } from "@/shared/hooks";
 
 export const Filters = () => {
   const filters = useFilters();

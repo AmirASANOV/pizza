@@ -70,7 +70,7 @@ model Ingredient {
     id Int @id @default(autoincrement())
     name String
     price Int
-    imageUrl String?
+    imageUrl String
 
     products Product[]
     cartItems CartItem[]

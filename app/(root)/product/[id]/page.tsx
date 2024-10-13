@@ -1,9 +1,9 @@
-import { ProductImage } from "@/components/shared/ProductImage";
+import { ProductImage } from "@/shared/components/shared/ProductImage";
 
 import { prisma } from "@/prisma/prisma-client";
 import { notFound } from "next/navigation";
-import { Container, Title } from "@/components/shared";
-import { GroupVariants } from "@/components/shared/GroupVariants";
+import { Container, Title } from "@/shared/components/shared";
+import { GroupVariants } from "@/shared/components/shared/GroupVariants";
 
 export default async function ProductPage({
   params: { id },
