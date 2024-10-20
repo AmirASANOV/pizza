@@ -4,19 +4,10 @@ import { ProductImage } from "./ProductImage";
 import { Title } from "./title";
 import { Button } from "../ui";
 import { GroupVariants } from "./GroupVariants";
-import {
-  mapPizzaType,
-  PizzaSize,
-  pizzaSizes,
-  PizzaType,
-  pizzaTypes,
-} from "@/shared/constants/pizza";
+import { PizzaSize, PizzaType, pizzaTypes } from "@/shared/constants/pizza";
 import { Ingredient, ProductItem } from "@prisma/client";
 import { IngredientItem } from "./IngredientItem";
-import { useSet } from "react-use";
-import { calcTotalPizzaPrice, getAvailablePizzaSizes } from "@/shared/lib";
 import { usePizzaOptions } from "@/shared/hooks/usePizzaOptions";
-import { it } from "node:test";
 import { getPizzaDetails } from "@/shared/hooks";
 
 interface Props {

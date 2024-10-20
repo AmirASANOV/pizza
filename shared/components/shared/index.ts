@@ -1,3 +1,4 @@
+import { CartDrawer } from "./CartDrawer";
 import { IngredientItem } from "./IngredientItem";
 import { ChoosePizzaForm } from "@/shared/components/shared/ChoosePizzaForm";
 import { ProductImage } from "./ProductImage";
@@ -12,6 +13,7 @@ export { FilterCheckbox } from "./FilterCheckbox";
 export { RangeSlider } from "./RangeSlider";
 export { SearchInput } from "./SearchInput";
 export { IngredientItem } from "./IngredientItem";
-
+export { CartButton } from "./CartButton";
+// export { CartDrawer } from "./CartDrawer";
 
 export * from "./modals";
