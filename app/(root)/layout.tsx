@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import "../globals.css";
-import { Header } from "@/shared/components/shared";
+import { CartButton, Header } from "@/shared/components/shared";
 import { ThemeProvider } from "@/shared/components/shared/ThemeProvider";
 
 export const metadata: Metadata = {
@@ -16,7 +16,6 @@ export default function HomeLayout({
   modal: React.ReactNode;
 }>) {
   return (
-
     <main className="min-h-screen bg-white">
       {/* <ThemeProvider
         attribute="class"
@@ -24,6 +23,7 @@ export default function HomeLayout({
         enableSystem
         disableTransitionOnChange
       > */}
+        {/* <CartButton /> */}
         <Header />
         {/* {modal} */}
         {/* {children} */}
