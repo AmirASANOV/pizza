@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import "../globals.css";
-import { CartButton, Header } from "@/shared/components/shared";
+import { Header } from "@/shared/components/shared";
 import { ThemeProvider } from "@/shared/components/shared/ThemeProvider";
 
 export const metadata: Metadata = {
@@ -23,10 +23,10 @@ export default function HomeLayout({
         enableSystem
         disableTransitionOnChange
       > */}
-        {/* <CartButton /> */}
+
         <Header />
-        {/* {modal} */}
-        {/* {children} */}
+        {modal}
+        {children}
       {/* </ThemeProvider> */}
     </main>
   );
