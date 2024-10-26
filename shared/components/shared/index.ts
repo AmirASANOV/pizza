@@ -14,6 +14,5 @@ export { RangeSlider } from "./RangeSlider";
 export { SearchInput } from "./SearchInput";
 export { IngredientItem } from "./IngredientItem";
 export { CartButton } from "./CartButton";
-// export { CartDrawer } from "./CartDrawer";
 
 export * from "./modals";

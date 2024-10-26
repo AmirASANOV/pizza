@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 import React, { FC } from "react";
 import { ProductImage } from "./ProductImage";
 import { Title } from "./title";
@@ -16,7 +16,7 @@ export const ChooseProductForm: FC<Props> = ({
   imageUrl,
   name,
 
-   onClickAdd,
+  onClickAdd,
   className,
 }) => {
   const textDetails = "30см, традиционное тесто, сыр Моцарелла, сырный соус";

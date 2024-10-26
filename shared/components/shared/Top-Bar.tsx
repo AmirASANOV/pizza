@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Categories } from "./Categories";
 import { SortPopup } from "./Sort-popup";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 import { Container } from "./Container";
 import { Category } from "@prisma/client";
 

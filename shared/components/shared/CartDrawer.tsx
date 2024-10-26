@@ -1,17 +1,28 @@
-'use client'
+"use client";
 
 import React, { FC, PropsWithChildren } from "react";
 import Link from "next/link";
 import { Button } from "../ui";
 import { ArrowRight } from "lucide-react";
-import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "../ui/sheet";
+import { CartDrawerItem } from "./CartDrawerItem";
 
 interface Props {
   className?: string;
 }
 
-export const CartDrawer: FC<PropsWithChildren<Props>> = ({ children, className }) => {
-
+export const CartDrawer: FC<PropsWithChildren<Props>> = ({
+  children,
+  className,
+}) => {
   return (
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
@@ -22,8 +33,32 @@ export const CartDrawer: FC<PropsWithChildren<Props>> = ({ children, className }
           </SheetTitle>
           <SheetDescription>View your cart</SheetDescription>
         </SheetHeader>
-        <div>123123123</div>
+
         {/*  items */}
+
+        <div className="-mx-6 mt-5 overflow-auto flex-1">
+          <div className="mb-2">
+            {/* {items.map((item) => (
+              <CartDrawerItem
+                key={item.id}
+                id={item.id}
+                imageUrl={item.imageUrl}
+                name={item.name}
+                price={item.price}
+                details={item.details}
+                quantity={item.quantity}
+              />
+            ))} */}
+            <CartDrawerItem
+              id={0}
+              details={""}
+              imageUrl={""}
+              name={""}
+              price={0}
+              quantity={0}
+            />
+          </div>
+        </div>
 
         <SheetFooter className="-mx-6 bg-white p-8">
           <div className="w-full">
@@ -48,6 +83,3 @@ export const CartDrawer: FC<PropsWithChildren<Props>> = ({ children, className }
     </Sheet>
   );
 };
-
-
-

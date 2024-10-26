@@ -16,18 +16,17 @@ export default function HomeLayout({
   modal: React.ReactNode;
 }>) {
   return (
-    <main className="min-h-screen bg-white">
-      {/* <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      > */}
-
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="light"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <main className="min-h-screen">
         <Header />
         {modal}
         {children}
-      {/* </ThemeProvider> */}
-    </main>
+      </main>
+    </ThemeProvider>
   );
 }

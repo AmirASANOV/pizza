@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 import React, { FC, useEffect, useState } from "react";
 import { ProductImage } from "./ProductImage";
 import { Title } from "./title";

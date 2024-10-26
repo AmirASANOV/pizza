@@ -1,14 +1,10 @@
-'use client';
+"use client";
 
 import React, { FC } from "react";
 import { Button } from "../ui";
 import { ShoppingCart, ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 import { CartDrawer } from "./CartDrawer";
-
-
-
-
 
 interface Props {
   className?: string;
