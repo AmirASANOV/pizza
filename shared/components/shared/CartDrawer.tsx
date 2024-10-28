@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, PropsWithChildren } from "react";
+import React, { FC, PropsWithChildren, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "../ui";
 import { ArrowRight } from "lucide-react";
@@ -14,6 +14,9 @@ import {
   SheetTrigger,
 } from "../ui/sheet";
 import { CartDrawerItem } from "./CartDrawerItem";
+import { useCartStore } from "./store/Cart";
+import { getCartItemDetails } from "@/shared/lib";
+import { PizzaSize, PizzaType } from "@/shared/constants/pizza";
 
 interface Props {
   className?: string;
@@ -23,6 +26,24 @@ export const CartDrawer: FC<PropsWithChildren<Props>> = ({
   children,
   className,
 }) => {
+  const [totalAmount, fetchCartItems, items] = useCartStore((state) => [
+    state.totalAmount,
+    state.fetchCartItems,
+    state.items,
+  ]);
+
+  useEffect(() => {
+    fetchCartItems();
+  }, []);
+
+  const onClickCountButton = (
+    id: number,
+    quantity: number,
+    type: "plus" | "minus"
+  ) => {
+    console.log({ id, quantity, type });
+  };
+
   return (
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
@@ -38,25 +59,28 @@ export const CartDrawer: FC<PropsWithChildren<Props>> = ({
 
         <div className="-mx-6 mt-5 overflow-auto flex-1">
           <div className="mb-2">
-            {/* {items.map((item) => (
+            {items.map((item) => (
               <CartDrawerItem
                 key={item.id}
                 id={item.id}
                 imageUrl={item.imageUrl}
                 name={item.name}
                 price={item.price}
-                details={item.details}
+                details={
+                  item.pizzaSizes && item.pizzaType
+                    ? getCartItemDetails(
+                        item.ingredients,
+                        item.pizzaType as PizzaType,
+                        item.pizzaSizes as PizzaSize
+                      )
+                    : ""
+                }
                 quantity={item.quantity}
+                onClickCountButton={(type) =>
+                  onClickCountButton(item.id, item.quantity, type)
+                }
               />
-            ))} */}
-            <CartDrawerItem
-              id={0}
-              details={""}
-              imageUrl={""}
-              name={""}
-              price={0}
-              quantity={0}
-            />
+            ))}
           </div>
         </div>
 

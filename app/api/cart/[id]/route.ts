@@ -1,4 +1,5 @@
 import { prisma } from "@/prisma/prisma-client";
+import { updateCartTotalAmount } from "@/shared/lib/updateCartTotalAmount";
 import { error } from "console";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -38,6 +39,18 @@ export async function PATCH(
         quantity: data.quantity,
       },
     });
+
+    await prisma.cartItem.update({
+      where: {
+        id,
+      },
+      data: {
+        quantity: data.quantity,
+      },
+    });
+
+    const updatedUserCart = await updateCartTotalAmount(token);
+    return NextResponse.json(updatedUserCart);
   } catch (error) {
     console.log("catch error", error);
     return NextResponse.json({ message: ["catch error"] }, { status: 500 });

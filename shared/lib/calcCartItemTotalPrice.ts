@@ -1,3 +1,4 @@
+import { CartItem } from "@prisma/client";
 import { CartItemDTO } from "../services/dto/cart.dto";
 
 export const calcCartItemTotalPrice = (item: CartItemDTO) => {
@@ -6,5 +7,5 @@ export const calcCartItemTotalPrice = (item: CartItemDTO) => {
     0
   );
 
-  return (ingredientsPrice + item.ProductItem.price) * item.quantity;
+  return (ingredientsPrice + item.productItem!.price) * item.quantity;
 };
