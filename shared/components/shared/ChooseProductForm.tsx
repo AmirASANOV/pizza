@@ -8,15 +8,20 @@ interface Props {
   imageUrl: string;
   name: string;
 
-  onClickAdd?: VoidFunction;
+  onSubmit?: VoidFunction;
   className?: string;
 }
+
+/**
+ * Форма выбора продукта
+ * @param param0
+ * @returns
+ */
 
 export const ChooseProductForm: FC<Props> = ({
   imageUrl,
   name,
-
-  onClickAdd,
+  onSubmit,
   className,
 }) => {
   const textDetails = "30см, традиционное тесто, сыр Моцарелла, сырный соус";
@@ -38,7 +43,10 @@ export const ChooseProductForm: FC<Props> = ({
 
         <p className="text-gray-400 ">{textDetails}</p>
 
-        <Button className="h-[55px] px-10 text-base font-bold rounded-[18px] w-full mt-10">
+        <Button
+          onClick={onSubmit}
+          className="h-[55px] px-10 text-base font-bold rounded-[18px] w-full mt-10"
+        >
           Добавить в корзину за <p className="ml-1">{price} ₽</p>
         </Button>
       </div>

@@ -14,7 +14,7 @@ import {
   SheetTrigger,
 } from "../ui/sheet";
 import { CartDrawerItem } from "./CartDrawerItem";
-import { useCartStore } from "./store/Cart";
+import { useCartStore } from "../../store/Cart";
 import { getCartItemDetails } from "@/shared/lib";
 import { PizzaSize, PizzaType } from "@/shared/constants/pizza";
 
@@ -26,10 +26,18 @@ export const CartDrawer: FC<PropsWithChildren<Props>> = ({
   children,
   className,
 }) => {
-  const [totalAmount, fetchCartItems, items] = useCartStore((state) => [
+  const [
+    totalAmount,
+    items,
+    fetchCartItems,
+    updateItemQuantity,
+    removeCartItem,
+  ] = useCartStore((state) => [
     state.totalAmount,
-    state.fetchCartItems,
     state.items,
+    state.fetchCartItems,
+    state.updateItemQuantity,
+    state.removeCartItem,
   ]);
 
   useEffect(() => {
@@ -41,7 +49,8 @@ export const CartDrawer: FC<PropsWithChildren<Props>> = ({
     quantity: number,
     type: "plus" | "minus"
   ) => {
-    console.log({ id, quantity, type });
+    const newQuantity = type === "plus" ? quantity + 1 : quantity - 1;
+    updateItemQuantity(id, newQuantity);
   };
 
   return (
@@ -79,6 +88,7 @@ export const CartDrawer: FC<PropsWithChildren<Props>> = ({
                 onClickCountButton={(type) =>
                   onClickCountButton(item.id, item.quantity, type)
                 }
+                onClickRemove={() => removeCartItem(item.id)}
               />
             ))}
           </div>
